@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools">
+  <!--
+    https://blog.csdn.net/xyl826/article/details/105070854/
+    https://www.jianshu.com/p/79e73d800a69
+    name  自定义的Application类的名称，应用启动时，此类将在应用的其他组件之前被实例化
+    allowBackup   是否允许备份和恢复应用程序数据 当allowBackup标志值为true时，即可通过adb backup和adb restore来，一般情况下，手动设置为false;
+    label   应用名称，标签应被设置为字符串资源引用
+    icon  定义应用的图标（方角），且为每个组件默认的图标，必须设置为drawable、mipmap资源的引用，无默认值
+    roundIcon 定义程序的圆形图标（圆角），使用roundIcon是为了做android图标适配
+    supportsRtl  是否支持从右到左(原来RTL就是right-to-left 的缩写...)的布局。
+                如果设置为true，targetSdkVersion设置为17或更高的版本，各种RTL的API将被激活，系统使用您的应用程序可以显示RTL布局。
+                如果设置为false，亦或者targetSdkVersion为16或者更低，RTL的API将被忽略或不影响应用程序（你的布局会从左至右）。
+                此属性的默认值是false。此属性被添加到API 17。
+    theme   给应用程序中所有的Activity设置默认的主题，属性值要引用一个样式资源。每个独立的Activity的主题会被它们自己的theme属性所覆盖。
+    tool:replace  当我们的项目的某些属性和第三方库中的属性有冲突时或者我们想修改第三方库中某些资源的属性时，我们就需要使用tools:replace来处理。
+    userCleartextTraffic  应用程序是否使用明文网络流量，例如明文Http
+                          目标API级别为27或更低的应用程序的默认值为“ true”。面向API级别28或更高级别的应用默认为“ false”。
+                          当属性设置为“ false”时，平台组件（例如，HTTP和FTP堆栈，DownloadManager和MediaPlayer）将拒
+                          绝应用程序使用明文流量的请求。强烈建议第三方库也采用此设置。避免明文通信的主要原因是缺乏机密性，真
+                          实性和防篡改保护；网络攻击者可以窃听所传输的数据，并且还可以对其进行修改而不会被检测到。
+    allowClearUserData  是否给用户删除用户数据的权限，如果为true用户就有清除数据的权限，false则没有；默认为true;
+    allowTaskReparenting  指定应用程序中定义的Activity能否从他们当前的任务中转移到这个有亲缘关系的任务中。
+                          当一个与当前任务有亲缘 关系的任务被带到前台时，用这个属性来指定应用程序中定义的Activity能否从他们
+                          当前的任务中转移到这个有亲缘关系的任务中。
+                          如果设置为true， 则能够转移，如果设置为false，则应用程序中的Activity必须保留在它们所在的任务中。
+                          默认值是false。<activity>元素有它们自己的allowTaskReparenting属性，它能够覆盖<application>元素中的设置；
+    backupAgent  定义应用程序备份代理的实现类的名称，无默认值
+    debuggable  应用是否可以使用debug,甚至运行在用户模式下，true为可以，false则不能。默认为false;
+    description   定义应用程序相关的用户可读文本，它要比应用程序标签更长更详细，它的值必须被设置为字符串资源的引用，无默认值；
+    enabled   指定Android系统能否实例化应用程序组件，true为可以，false则不能够实例化，且所有组件都会被禁用，属性默认为true;
+    hasCode   用于设置应用程序是否包含了代码，如果设置为true,则包含代码，否则不包含代码；
+              这个属性设置为false时，系统在加载组件的时候不会试图加载任何应用程序的代码，默认值是true;
+    hardwareAccelerated   是否为所有Activity和View对象启用硬件加速渲染，如果为true则启动，false则不会启用，默认值是false ;
+    killAfterRestore  指定在全系统恢复期间，应用的设置被恢复之后，对应的应用程序是否应该被终止。默认值是true;
+                      这个属性用于指定在全系统的恢复操作期间，应用的设置被恢复以后，对应的问题程序是否应该被终止。单包恢复操作不会导致应用程序被关掉。
+                      全系统的复原操作通常只会发生一次，就是在电话被首次建立的时候。第三方应用程序通常不需要使用这个属性。
+                      默认值是true，这意味着在全系统复原期间，应用程序完成数据处理之后，会被终止。
+    logo  给应用程序设置一个Logo，而且它也是所有Activity的默认Logo,设置时必须要引用图片资源，且无默认Logo;
+    manageSpaceActivity   定义了一个完整的Activity子类的名字，系统能够把这个名字加载到由用户管理被应用程序所占用的设备上的内存；
+    permission  定义了一个权限，威力跟应用程序进行交互，客户端必须要有这个权限。
+                这个属性是为给所有的应用程序组件设置权限提供了便利的方法。它能够被独立组件所设置的permission属性所覆盖。
+    persistent  设置应用程序是否应该时刻保持运行状态，true则保持，false则不保持，默认值是false ;
+                普通的应用程序不应该设置这个属性，持久运行模式仅用于某些系统级的应用程序；
+    process   用来定义一个进程名称，应用程序所有的组件都应该运行在这个进程中。每个组件都能够用它自己process属性的设置来覆盖这个<application>元素中的设置。
+              默认情况下，当应用程序的第一个组件需要运行时，Android系统就会给这个应用程序创建一个进程。然后，
+              应用中的所有组件都运行在这个进程中。
+              默认的进程名是跟<manifest>元素中设置的包名进行匹配的。通过设置这个属性，能够跟另外一个应用程序共享一个进程名，
+              能够把这两个应用程序中的组件都安排到同一个进程中运行,但是仅限于这两个应用程序共享一个用户ID，并且带有相同的数字证书。
+              如果这个进程名称用“：”开头，那么在需要的时候，就会给应用程序创建一个新的、私有的进程。如果进程名用小写字符开头，
+              就会用这个名字创建一个全局的进程，这个全局的进程能够被其他应用程序共享，从而减少资源的使用。
+    restoreAnyVersion   设置这个属性表示应用程序准备尝试恢复任何备份的数据集，默认值为false;
+                        即使备份比设备上当前安装的应用程序的版本要新。这个属性设置为true，即使是在版本不匹配而产生数据兼
+                        容性提示的时候，也会允许备份管理来恢复备份的数据，所以要谨慎使用。
+    taskAffinity  这个属性给应用的所有的Activity设置了一个亲缘关系名，除了那些用它们自己的taskAffinity属性设置不同亲缘关系的组件。
+                  默认情况下，应用程序中的所有Activity都会共享相同的亲缘关系，亲缘关系的名称跟由<manifest>元素设置的包名相同。
+    uiOptions   设置Activity的UI的额外选项；
+                链接：uiOption的两个值
+                none:默认设置，没有额外的UI选项。
+    splitActionBarWhenNarrow    在水平空间受到限制的时 候，会在屏幕的底部添加一个用于显示ActionBar中操作项的栏，
+                                例如：在纵向的手持设备上。而不是在屏幕顶部的操作栏中显示少量的操作项。
+                                它会把操作栏分成上下两部分，顶部用于导航选择，底部用于操作项目。
+                                这样就会确保可用的合理空间不仅只是针对操作项目，而且还会在顶部给导航和标题留有空间。
+                                菜单项目不能被分开到两个栏中，它们要显示在一起。
+    networkSecurityConfig 详情见：https://developer.android.google.cn/training/articles/security-config.html
+    requestLegacyExternalStorage  为true，才可以访问沙盒路径下的数据，targetSdkVersion<29的应用程序默认为true
+    maxAspectRatio  应用显示高宽比
+    resizeableActivity  如果不声明这个属性，那么默认允许进入多窗口模式，但是会有上面图片的提示（第一次运行的时候）
+                        如果声明了这个属性，并设置值为true，那么允许进入多窗口模式，并且不会提示
+                        如果声明了这个属性，并设置值为false，那么不允许进入多窗口模式，只允许全屏显示
+    usesCleartextTraffic  配置明文密文请求管理 https://blog.csdn.net/kami_zeros/article/details/120482459
+                          目标API级别为27或更低的应用程序的默认值为“ true”。面向API级别28或更高级别的应用默认为“ false”
+                          这个值会影响WebView的拍照获取，设置为true时才能正确选取，false时暂时不知道如何处理
+                          networkSecurityConfig配置被允许访问的ip地址，这些ip地址上的服务可以使用http，而无需配置https
+    extractNativeLibs 安装APK包时是否对其中的.so文件提取出来
+    -->
+  <application
+    android:extractNativeLibs="true"
+    android:maxAspectRatio="2.4"
+    android:requestLegacyExternalStorage="true"
+    android:resizeableActivity="true"
+    android:usesCleartextTraffic="true"
+    tools:ignore="UnusedAttribute">
+
+
+    <!--https://github.com/JessYanCoding/AndroidAutoSize-->
+    <meta-data
+      android:name="design_width_in_dp"
+      android:value="360" />
+    <meta-data
+      android:name="design_height_in_dp"
+      android:value="640" />
+
+
+    <!--https://github.com/getActivity/XXPermissions-->
+    <!-- 告知 XXPermissions 当前项目已经适配了分区存储特性 -->
+    <meta-data
+      android:name="ScopedStorage"
+      android:value="true" />
+
+
+    <!--https://github.com/gyf-dev/ImmersionBar-->
+    <meta-data
+      android:name="android.max_aspect"
+      android:value="2.4" />
+    <!--适配华为（huawei）刘海屏-->
+    <meta-data
+      android:name="android.notch_support"
+      android:value="true" />
+    <!--适配小米（xiaomi）刘海屏-->
+    <meta-data
+      android:name="notch.config"
+      android:value="portrait|landscape" />
+
+    <provider
+      android:name="com.rousetime.android_startup.provider.StartupProvider"
+      android:authorities="${applicationId}.android_startup"
+      android:exported="false">
+
+      <meta-data
+        android:name="cc.res.AppStartupConfig"
+        android:value="android.startup.provider.config" />
+
+      <meta-data
+        android:name="cc.res.FirstStartup"
+        android:value="android.startup" />
+
+    </provider>
+  </application>
+</manifest>

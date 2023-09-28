@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="ABase2024" parent="BaseAppTheme" />
+
+  <style name="SplashTheme" parent="ABase2024">
+    <item name="android:windowBackground">@drawable/fit_splash_bg</item>
+    <item name="android:windowTranslucentStatus">true</item>
+    <item name="android:windowTranslucentNavigation">true</item>
+  </style>
+</resources>

@@ -10,3 +10,7 @@ CMD或者Terminal下执行：adb connect 127.0.0.1:62001
 
 新版Logcat经常OFFLINE 解决方案
 https://blog.csdn.net/llfnqt/article/details/130621967
+
+//打包命令
+./gradlew clean assembleRelease
+./gradlew clean assembleDebug

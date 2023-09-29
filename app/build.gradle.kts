@@ -3,6 +3,7 @@ import java.text.SimpleDateFormat
 plugins {
   id("com.android.application")
   id("org.jetbrains.kotlin.android")
+  id("walle")
 }
 
 //<editor-fold defaultstate="collapsed" desc="基础配置">
@@ -106,7 +107,7 @@ dependencies {
   implementation(Deps.okhttp)
   implementation(Deps.multitype)
   implementation(Deps.utilcodex)
-  //implementation(Deps.walle)
+  implementation(Deps.walle_library)
 }
 //</editor-fold>
 

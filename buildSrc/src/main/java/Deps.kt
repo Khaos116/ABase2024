@@ -74,5 +74,6 @@ object Deps {
   const val apk_parser = "net.dongliu:apk-parser:2.6.10"//打包完成后读取APK信息 https://github.com/hsiafan/apk-parser
   const val libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.22"//https://github.com/google/libphonenumber/wiki/Android-Studio-setup
   const val pictureselector = "io.github.lucksiege:pictureselector:v${Version.picSel}"//https://github.com/LuckSiege/PictureSelector
-  const val walle = "com.github.Petterpx.walle:plugin:1.0.5"//https://github.com/Petterpx/walle
+  const val walle_plugin = "com.github.Petterpx.walle:plugin:1.0.5"//https://github.com/Petterpx/walle
+  const val walle_library = "com.github.Petterpx.walle:library:1.0.5"//https://github.com/Petterpx/walle
 }

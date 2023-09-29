@@ -1,6 +1,7 @@
 buildscript {
   dependencies {
     classpath(Deps.apk_parser)
+    classpath(Deps.walle_plugin)
   }
 }
 

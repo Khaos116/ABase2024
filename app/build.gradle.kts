@@ -12,7 +12,7 @@ android {
   compileSdk = ConfigBuild.compileSdk
   startCheckDuplicateResources()//检测重复文件
   defaultConfig {
-    applicationId = "cc.abase"
+    applicationId = "zz.xx.cc"
     minSdk = ConfigBuild.minSdk
     targetSdk = ConfigBuild.targetSdk
     versionCode = 1
@@ -60,23 +60,23 @@ android {
   }
 
   //https://github.com/owntracks/android/blob/43db0ad8428fa30e3edb1e27c9c08143e3e81693/project/app/build.gradle.kts
-  flavorDimensions.add("default")
-  productFlavors {
-    create("c1") {
-      dimension = "default"
-      applicationIdSuffix = ".c1"
-      versionCode = ConfigBuild.versionCodeC1
-      versionName = ConfigBuild.versionNameC1
-      resValue("string", "app_name", "C1渠道")
-    }
-    create("c2") {
-      dimension = "default"
-      applicationIdSuffix = ".c2"
-      versionCode = ConfigBuild.versionCodeC2
-      versionName = ConfigBuild.versionNameC2
-      resValue("string", "app_name", "@string/APP名称")
-    }
-  }
+  //flavorDimensions.add("default")
+  //productFlavors {
+  //  create("c1") {
+  //    dimension = "default"
+  //    applicationIdSuffix = ".c1"
+  //    versionCode = ConfigBuild.versionCodeC1
+  //    versionName = ConfigBuild.versionNameC1
+  //    resValue("string", "app_name", "C1渠道")
+  //  }
+  //  create("c2") {
+  //    dimension = "default"
+  //    applicationIdSuffix = ".c2"
+  //    versionCode = ConfigBuild.versionCodeC2
+  //    versionName = ConfigBuild.versionNameC2
+  //    resValue("string", "app_name", "@string/APP名称")
+  //  }
+  //}
 
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -117,8 +117,6 @@ android.applicationVariants.all {//这里会走"渠道数"x2(Debug+Release)的�
   outputs.all {
     //正式版还是测试版
     val apkBuildType = buildType.name.replaceFirstChar { it.uppercase() }
-    //渠道名称
-    val apkFlavorsName = productFlavors[0].name.replaceFirstChar { it.uppercase() }
     //打包完成后执行APK复制到指定位置
     assembleProvider.get().doLast {
       //使用ApkParser库解析APK文件的清单信息
@@ -126,14 +124,14 @@ android.applicationVariants.all {//这里会走"渠道数"x2(Debug+Release)的�
       val apkName = apkParser.apkMeta.label
       val apkVersion = apkParser.apkMeta.versionName
       val buildEndTime = SimpleDateFormat("yyyyMMdd_HHmm").format(System.currentTimeMillis())
-      val apkFileName = "${apkName}_${if (apkBuildType == "Debug") "测试版" else "正式版"}_${apkVersion}_${buildEndTime}.apk"
+      val apkFileName = "${apkName}_${apkBuildType}_${apkVersion}_${buildEndTime}.apk"
       val destDir = if ("Debug" == apkBuildType) {
         File(rootDir, "APK/${apkBuildType}").also {
           if (!it.exists()) it.mkdirs()
           com.android.utils.FileUtils.deleteDirectoryContents(it)
         }
       } else {
-        File(rootDir, "APK/${apkFlavorsName}/${apkBuildType}").also { if (!it.exists()) it.mkdirs() }
+        File(rootDir, "APK/${apkBuildType}").also { if (!it.exists()) it.mkdirs() }
       }
       outputFile.copyTo(File(destDir, apkFileName), true)
     }

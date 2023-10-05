@@ -71,7 +71,7 @@ android {
     }
     create("c2") {
       dimension = "default"
-      applicationIdSuffix = ".c1"
+      applicationIdSuffix = ".c2"
       versionCode = ConfigBuild.versionCodeC2
       versionName = ConfigBuild.versionNameC2
       resValue("string", "app_name", "@string/APP名称")

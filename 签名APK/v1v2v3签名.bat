@@ -29,29 +29,29 @@ set fileDate=_%date:~3,4%%date:~8,2%%date:~11,2%_%time:~0,2%%time:~3,2%
 for %%i in (*.apk) do (
        set "filename=%%i"
        if "!filename!"=="!filename:align=!" (
-                echo 文件名称不包含align，需要直接对齐和签名：%%~nxi
-	::打印签名信息
-	echo %date%_%time%  签名文件路径=%~dp0%jksFile%
-	echo=
-	echo %date%_%time%  签名Alias=%keyAlias%
-	echo %date%_%time%  KeyStore密码=%storePassword%
-	echo %date%_%time%  Alias对应密码=%keyPassword%
-	echo=
-	echo %date%_%time%  原APK=%%~fi
-	echo %date%_%time%  新APK=%~dp0%%~ni%suffix%%suffix2%%fileDate%.apk
-	echo=
-	echo %date%_%time% APK要先对齐再签名,否则会导致V2和V3丢失^(^> NUL不输出过程^)
-  	zipalign -v 4  %%~fi %~dp0%%~ni%suffix%.apk > NUL
-	echo=
-	echo %date%_%time% 写入签名^(V1+V2+V3^)
-	java -jar apksigner.jar sign --ks %jksFile% --ks-key-alias %keyAlias% --ks-pass pass:%storePassword% --key-pass pass:%keyPassword% --out %~dp0%%~ni%suffix%%suffix2%%fileDate%.apk %~dp0%%~ni%suffix%.apk
-	echo=
-	echo 删除签名后生成的临时文件
-	if exist %~dp0%%~ni%suffix%%suffix2%%fileDate%.apk.idsig del %~dp0%%~ni%suffix%%suffix2%%fileDate%.apk.idsig
-	if exist %~dp0%%~ni%suffix%.apk del %~dp0%%~ni%suffix%.apk
-	echo=
+              echo 文件名称不包含align，需要直接对齐和签名：%%~nxi
+		::打印签名信息
+		echo %date%_%time%  签名文件路径=%~dp0%jksFile%
+		echo=
+		echo %date%_%time%  签名Alias=%keyAlias%
+		echo %date%_%time%  KeyStore密码=%storePassword%
+		echo %date%_%time%  Alias对应密码=%keyPassword%
+		echo=
+		echo %date%_%time%  原APK=%%~fi
+		echo %date%_%time%  新APK=%~dp0%%~ni%suffix%%suffix2%%fileDate%.apk
+		echo=
+		echo %date%_%time% APK要先对齐再签名,否则会导致V2和V3丢失^(^> NUL不输出过程^)
+	  	zipalign -v 4  %%~fi %~dp0%%~ni%suffix%.apk > NUL
+		echo=
+		echo %date%_%time% 写入签名^(V1+V2+V3^)
+		java -jar apksigner.jar sign --ks %jksFile% --ks-key-alias %keyAlias% --ks-pass pass:%storePassword% --key-pass pass:%keyPassword% --out %~dp0%%~ni%suffix%%suffix2%%fileDate%.apk %~dp0%%~ni%suffix%.apk
+		echo=
+		echo 删除签名后生成的临时文件
+		if exist %~dp0%%~ni%suffix%%suffix2%%fileDate%.apk.idsig del %~dp0%%~ni%suffix%%suffix2%%fileDate%.apk.idsig
+		if exist %~dp0%%~ni%suffix%.apk del %~dp0%%~ni%suffix%.apk
+		echo=
        ) else (
-    	echo 文件名称包含align，不执行签名，继续下一个文件：%%~nxi
+    		echo 文件名称包含align，不执行签名，继续下一个文件：%%~nxi
        )
 )
 echo=

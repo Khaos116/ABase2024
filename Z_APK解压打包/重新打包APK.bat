@@ -3,6 +3,7 @@ chcp 65001
 
 ::双冒号表示注释(setlocal enabledelayedexpansion是延迟变量赋值使用)
 @echo off&setlocal enabledelayedexpansion
+::Apk 二次打包修改包名、配置 https://blog.csdn.net/LIQIANGEASTSUN/article/details/132321685
 
 echo ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆==开始打包APK==☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 for %%i in (*.apk) do (

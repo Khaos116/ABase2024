@@ -7,8 +7,9 @@ echo ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆==Star
 echo=
 
 ::APK加固后需要重新写入V2签名，采用免费的"易固V1.0"进行加固(https://bbs.125.la/thread-14620441-1-1.html)
-::apksigner.jar文件在SDK目录下，如E:\01StudioAndEclipseSdk\build-tools\30.0.3\lib\apksigner.jar
-::签名文件信息，参考https://www.it610.com/article/1291216346465509376.htm
+::apksigner.jar文件在SDK目录下，如D:\SDK\build-tools\33.0.2\lib\apksigner.jar
+::zipalign.exe文件在SDK目录下，如D:\SDK\build-tools\33.0.2\zipalign.exe
+::签名文件信息，参考https://blog.csdn.net/u014692069/article/details/130325680
 set jksFile=com_ab.jks
 
 set keyAlias=com_cc

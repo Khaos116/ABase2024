@@ -15,7 +15,7 @@ android {
     applicationId = "zz.xx.cc"
     minSdk = ConfigBuild.minSdk
     targetSdk = ConfigBuild.targetSdk
-    versionCode = 1
+    versionCode = 100
     versionName = "1.0.0"
     resourceConfigurations.addAll(listOf("zh", "zh-rCN"))//可能三方会使用zh-rCN，所以需要保留(如果随便写一种没有的语言，则只会打默认的文字资源到APK)
     ndk { abiFilters.addAll(setOf("armeabi-v7a")) }//"x86", "x86_64", "armeabi-v7a", "arm64-v8a"

@@ -8,6 +8,7 @@ echo=
 
 ::1.清理解压缩后的文件夹
 ::2.清理新生成的APK文件
+::3.杀掉java是否内存
 
 ::遍历当前文件夹的所有子文件夹并删除
 for /d %%i in (*) do (
@@ -32,7 +33,8 @@ for %%i in (*.apk) do (
         if exist %%i del %%i
     )
 )
-
+::杀掉java是否内存
+taskkill /f /t /im java.exe
 echo=
 echo ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆==End==☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 endlocal

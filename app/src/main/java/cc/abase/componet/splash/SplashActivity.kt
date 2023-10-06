@@ -19,7 +19,10 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding.tv.text = getString(cc.abase.R.string.buildTime)
+    binding.tv.append("\n${AppUtils.getAppName()}")
     binding.tv.append("\n${AppUtils.getAppPackageName()}")
+    binding.tv.append("\n${AppUtils.getAppVersionName()}")
+    binding.tv.append("\n${AppUtils.getAppVersionCode()}")
     WalleChannelReader.getChannelInfo(this)?.let {
       binding.tv.append("\n${GsonUtils.toJson(it)}")
     }

@@ -76,4 +76,6 @@ object Deps {
   const val pictureselector = "io.github.lucksiege:pictureselector:v${Version.picSel}"//https://github.com/LuckSiege/PictureSelector
   const val walle_plugin = "com.github.Petterpx.walle:plugin:1.0.5"//https://github.com/Petterpx/walle
   const val walle_library = "com.github.Petterpx.walle:library:1.0.5"//https://github.com/Petterpx/walle
+  const val jpush = "cn.jiguang.sdk:jpush:5.0.3"//http://docs.jiguang.cn/jpush/quickstart/Android_quick
+  const val sharetrace = "com.sharetrace:sharetrace-android-sdk:2.1.9"//https://www.sharetrace.com/docs/guide/android.html
 }

@@ -19,6 +19,10 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+    <meta-data
+      android:name="com.sharetrace.APP_KEY"
+      android:value="${SHARETRACE_APPKEY}" />
   </application>
 
 </manifest>

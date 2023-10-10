@@ -21,6 +21,14 @@ android {
     ndk { abiFilters.addAll(setOf("armeabi-v7a")) }//"x86", "x86_64", "armeabi-v7a", "arm64-v8a"
     resValue("string", "buildTime", SimpleDateFormat("yyyyMMdd_HHmm").format(System.currentTimeMillis()))
     resValue("string", "buildVersion", SimpleDateFormat("MMddHHmm").format(System.currentTimeMillis()))
+    manifestPlaceholders.putAll(
+      mapOf(
+        "JPUSH_APPKEY" to "{JPUSH_APPKEY}",
+        "JPUSH_CHANNEL" to "{JPUSH_CHANNEL}",
+        "JPUSH_PKGNAME" to "{JPUSH_PKGNAME}",
+        "SHARETRACE_APPKEY" to "{SHARETRACE_APPKEY}",
+      )
+    )
   }
 
   //https://github.com/owntracks/android/blob/43db0ad8428fa30e3edb1e27c9c08143e3e81693/project/app/build.gradle.kts
@@ -108,6 +116,8 @@ dependencies {
   implementation(Deps.multitype)
   implementation(Deps.utilcodex)
   implementation(Deps.walle_library)
+  implementation(Deps.jpush)
+  implementation(Deps.sharetrace)
 }
 //</editor-fold>
 

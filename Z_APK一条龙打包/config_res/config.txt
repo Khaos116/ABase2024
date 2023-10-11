@@ -1,0 +1,12 @@
+SIGN_KEYALIAS=com_cc
+SIGN_STOREPASSWORD=com_cc
+SIGN_KEYPASSWORD=com_cc
+appName=一条龙
+package=cc.abase.ytl
+versionName=2.0.0
+versionCode=200
+resFileName=channel_C2_Debug
+openLog=true
+channel=chytl
+JPUSH_APPKEY=myJpushKeyytl
+SHARETRACE_APPKEY=mySharetraceKeyytl

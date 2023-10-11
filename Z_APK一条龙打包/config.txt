@@ -1,9 +1,0 @@
-channel_C1_Debug=appName=一条龙
-channel_C1_Debug=package=cc.abase.ytl
-channel_C1_Debug=versionName=2.0.0
-channel_C1_Debug=versionCode=200
-channel_C1_Debug=resFileName=channel_C2_Debug
-channel_C1_Debug=openLog=true
-channel_C1_Debug=channel=chytl
-channel_C1_Debug=JPUSH_APPKEY=myJpushKeyytl
-channel_C1_Debug=SHARETRACE_APPKEY=mySharetraceKeyytl

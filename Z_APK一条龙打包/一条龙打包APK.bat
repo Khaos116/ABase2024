@@ -53,7 +53,6 @@ echo=
 echo -------------------------------------第1步---清理缓存-------------------------------------
 call :clearCache
 echo=
-
 echo -------------------------------------第2步---读取配置-------------------------------------
 call :readConfig %tConfigTxt%
 set configSignKeyalias=%result1%
@@ -125,8 +124,8 @@ echo=
 echo ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆==End==☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 set endTime=%date:~3% %time%
 echo=
-echo 开始时间:%startTime%
-echo 结束时间:%endTime%
+echo 开始时间：%startTime%
+echo 结束时间：%endTime%
 echo=
 endlocal
 pause
@@ -291,8 +290,8 @@ for %%i in (*.apk) do (
     set "filename=%%i"
     if "!filename!"=="!filename:_new=!" (
         echo 找到需要替换的文件：%%~ni
-        echo 旧字符串:!oldStr!
-        echo 新字符串:!newStr!
+        echo 旧字符串：!oldStr!
+        echo 新字符串：!newStr!
         set manifestFile=%%~ni\AndroidManifest.xml
         :: 使用 PowerShell 来替换文本
         powershell -Command "(Get-Content !manifestFile!) | Foreach-Object { $_ -replace '!oldStr!', '!newStr!' } | Set-Content !manifestFile!"

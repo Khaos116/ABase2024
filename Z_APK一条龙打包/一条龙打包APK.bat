@@ -6,7 +6,8 @@ chcp 65001
 @echo off&setlocal enabledelayedexpansion
 echo ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆==Start==☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 echo=
-
+echo=
+set startTime=%date:~3% %time%
 set myDir=%cd%\
 set tDirRes=%cd%\config_res\
 set tDirThird=%cd%\config_third\
@@ -18,28 +19,37 @@ set tConfigZipalign=%tDirThird%zipalign.exe
 set tConfigTxt=%tDirRes%config.txt
 echo **********************************************************************************
 echo 1.电脑需要配置Java环境：https://www.runoob.com/java/java-comments.html
+echo=
 echo 2.需要的基础文件(放到config_third里面,文件名不能改)
-echo       “apktool.jar”--^>^>APK解压和压缩
-echo       “zipalign.exe”--^>^>APK对齐
-echo       “apksigner.jar”--^>^>APK签名
-echo       “walle.jar”--^>^>PK渠道写入
-echo       “sign.jks”--^>^>APK签名文件
+echo       apktool.jar--^>^>APK解压和压缩  
+echo       zipalign.exe--^>^>APK对齐  
+echo       apksigner.jar--^>^>APK签名  
+echo       walle.jar--^>^>PK渠道写入  
+echo       sign.jks--^>^>APK签名文件  
+echo=
 echo 3.配置文件(放到config_res里面,文件名不能改)     
 echo       config.txt--^>^>打包的配置信息(主要包含签名、包名、版本、三方相关key等)
+echo=
 echo 4.资源文件(放到config_res里面,和配置文件里面对应) 
+echo=
 echo 5.需要修改的原始APK文件(包名不能包含_new和_sign)
+echo=
 echo 6.原始项目用到极光，manifestPlaceholders需要这样配置
 echo        manifestPlaceholders = [
 echo            JPUSH_PKGNAME    : "{JPUSH_PKGNAME}",
 echo            JPUSH_APPKEY     : "{JPUSH_APPKEY}",
 echo            JPUSH_CHANNEL    : "{JPUSH_CHANNEL}",
 echo        ]
+echo=
 echo 7.原始项目用到Sharetrace，manifestPlaceholders需要这样配置
 echo        manifestPlaceholders = [
 echo            SHARETRACE_APPKEY: "{SHARETRACE_APPKEY}",
 echo        ]
+echo=
 echo 注：APK需要和exe文件放到同一目录
 echo **********************************************************************************
+echo=
+echo=
 echo -------------------------------------第1步---清理缓存-------------------------------------
 call :clearCache
 echo=
@@ -113,6 +123,11 @@ echo=
 
 echo=
 echo ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆==End==☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+set endTime=%date:~3% %time%
+echo=
+echo 开始时间:%startTime%
+echo 结束时间:%endTime%
+echo=
 endlocal
 pause
 exit
@@ -453,7 +468,7 @@ for %%i in (*.apk) do (
       ::~fi表示文件全路径
       set myDate=%date:~3,4%%date:~8,2%%date:~11,2%
       set myTime=%time:~0,2%%time:~3,2%
-      java -jar %tConfigAalle% put -c !channel! -e openLog=!openLog! %%~fi %myDir%outFileApk!myDate!\%%~ni_!channel!_!myTime!.apk
+      java -jar %tConfigAalle% put -c !channel! -e openLog=!openLog! %%~fi %myDir%out_apk_!myDate!\%%~ni_!channel!_!myTime!.apk
       if exist %%~fi del %%~fi
    )
 )

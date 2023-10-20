@@ -14,3 +14,6 @@ https://blog.csdn.net/llfnqt/article/details/130621967
 //打包命令
 ./gradlew clean assembleRelease
 ./gradlew clean assembleDebug
+
+//charles激活
+https://www.zzzmode.com/mytools/charles/

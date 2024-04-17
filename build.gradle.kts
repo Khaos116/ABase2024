@@ -12,10 +12,10 @@ plugins {
 }
 
 gradle.taskGraph.whenReady {
-  val debugTasks = tasks.filter { task -> task.name.contains("debug", true) }
+  val debugTasks = allTasks.filter { task -> task.name.contains("debug", true) }
   val isDebug = debugTasks.isNotEmpty()
   if (isDebug) {
-    tasks.forEach { task ->//测试版跳过Lint和Test相关的task,以加速编译
+    debugTasks.forEach { task ->//测试版跳过Lint和Test相关的task,以加速编译
       val name = task.name.lowercase()
       if (name.contains("test") || name.contains("lint") || name.contains("upload")) task.enabled = false
     }
